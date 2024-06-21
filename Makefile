@@ -9,9 +9,9 @@ SRC		= main.c \
 		input_check.c input_check_utils.c \
 		initialization.c \
 		stack.c \
-		swap.c push.c rotate.c reverse_rotate.c \
-		sort_tiny.c sort.c \
-		position.c cost.c do_move.c \
+		swap.c push.c actions.c reverse_actions.c \
+		tiny_sort.c sort.c \
+		position.c move_cost.c do_move.c \
 		utils.c
 SRCS	= $(addprefix $(SRC_PATH), $(SRC))
 OBJ		= $(SRC:.c=.o)
