@@ -6,7 +6,7 @@
 /*   By: albealva <albealva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:15:41 by albealva          #+#    #+#             */
-/*   Updated: 2024/06/23 11:40:11 by albealva         ###   ########.fr       */
+/*   Updated: 2024/06/23 11:52:48 by albealva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 static int	arg_is_number(char *av)
 {
-	int i = 0;
+	int	i;
 
-	if (av[i] == '\0') // Argumento vacío
+	i = 0;
+	if (av[i] == '\0')
 		return (0);
-	if (is_sign(av[i]) && av[i + 1] != '\0') // Signo seguido de un número
+	if (is_sign(av[i]) && av[i + 1] != '\0')
 		i++;
 	while (av[i])
 	{
@@ -31,18 +32,18 @@ static int	arg_is_number(char *av)
 
 static int	adjusted_nbstr_cmp(const char *s1, const char *s2)
 {
-	char adj_s1[12];
-	char adj_s2[12];
+	char	adj_s1[12];
+	char	adj_s2[12];
 
 	adjust_number_format(s1, adj_s1);
 	adjust_number_format(s2, adj_s2);
-
-	return nbstr_cmp(adj_s1, adj_s2);
+	return (nbstr_cmp(adj_s1, adj_s2));
 }
 
 static int	have_duplicates(char **av)
 {
-	int i, j;
+	int	i;
+	int	j;
 
 	i = 1;
 	while (av[i])
@@ -61,8 +62,9 @@ static int	have_duplicates(char **av)
 
 static int	arg_is_zero(char *av)
 {
-	int i = 0;
+	int	i;
 
+	i = 0;
 	if (is_sign(av[i]))
 		i++;
 	while (av[i] && av[i] == '0')
@@ -72,22 +74,23 @@ static int	arg_is_zero(char *av)
 	return (1);
 }
 
-int is_correct_input(char **av)
+int	is_correct_input(char **av)
 {
-	int i, nb_zeros;
+	int	i;
+	int	nb_zeros;
 
 	nb_zeros = 0;
 	i = 1;
 	while (av[i])
 	{
-		if (!arg_is_number(av[i])) // Verificar si es un número válido
+		if (!arg_is_number(av[i]))
 			return (0);
-		nb_zeros += arg_is_zero(av[i]); // Contar ceros
+		nb_zeros += arg_is_zero(av[i]);
 		i++;
 	}
-	if (nb_zeros > 1) // Verificar si hay más de un cero
+	if (nb_zeros > 1)
 		return (0);
-	if (have_duplicates(av)) // Verificar duplicados
+	if (have_duplicates(av))
 		return (0);
 	return (1);
 }
