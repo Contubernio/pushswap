@@ -6,7 +6,7 @@
 /*   By: albealva <albealva@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 19:13:52 by albealva          #+#    #+#             */
-/*   Updated: 2024/06/21 13:17:02 by albealva         ###   ########.fr       */
+/*   Updated: 2024/06/23 11:38:17 by albealva         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,5 @@ int			is_correct_input(char **av);
 int			is_digit(char c);
 int			is_sign(char c);
 int			nbstr_cmp(const char *s1, const char *s2);
-
+void		adjust_number_format(const char *str, char *new_str);
 #endif
