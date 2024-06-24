@@ -1,5 +1,5 @@
 CC		= gcc
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra -fsanitize=leak
 NAME	= push_swap
 
 SRC_PATH = src/
@@ -20,7 +20,7 @@ INCS	= -I ./includes/
 
 all: $(OBJ_PATH) $(NAME) 
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c Makefile includes/push_swap.h
 	$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
 
 $(OBJ_PATH):
