@@ -1,0 +1,80 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    arbol_descr.txt                                    :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: albealva <albealva@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/06/24 16:48:27 by albealva          #+#    #+#              #
+#    Updated: 2024/06/24 16:49:39 by albealva         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+main (main.c)
+*Punto de entrada del programa. Inicializa las pilas, verifica la entrada y llama a la función principal de ordenamiento.*
+├── initialize_stack (initialization.c)
+    *Inicializa las pilas y llena con los valores de entrada.*
+│   ├── parse_input (initialization.c)
+        *Convierte los argumentos de entrada en valores numéricos y los verifica.*
+│   │   ├── ft_atoi (utils.c)
+            *Convierte una cadena a un entero.*
+│   │   ├── check_input (input_check.c)
+            *Verifica que la entrada sea válida y no contenga duplicados.*
+│   │   │   ├── is_number (input_check.c)
+                *Comprueba si la cadena es numérica.*
+│   │   │   └── is_duplicate (input_check.c)
+                *Comprueba si hay duplicados en la entrada.*
+├── assign_index (initialization.c)
+    *Asigna índices a los elementos en función de su valor.*
+├── push_swap (pushswap.c)
+    *Determina el algoritmo de ordenamiento apropiado según el tamaño de la pila.*
+│   ├── sort (sort.c)
+        *Implementa el algoritmo principal de ordenamiento.*
+│   │   ├── tiny_sort (tiny_sort.c)
+            *Ordena pilas pequeñas (tamaño 3).*
+│   │   │   └── do_sa (swap.c)
+                *Intercambia los dos elementos superiores de stack_a.*
+│   │   ├── push_all_save_three (sort.c)
+            *Empuja todos los elementos menos tres de stack_a a stack_b.*
+│   │   │   └── do_pb (push.c)
+                *Mueve el elemento superior de stack_a a stack_b.*
+│   │   ├── sort_three (tiny_sort.c)
+            *Ordena tres elementos en stack_a.*
+│   │   ├── get_cost (move_cost.c)
+            *Calcula el costo de mover cada elemento de stack_b a su posición correcta en stack_a.*
+│   │   │   ├── get_position (position.c)
+                *Asigna la posición actual de cada elemento en la pila.*
+│   │   │   └── get_target_position (position.c)
+                *Determina la posición objetivo para cada elemento de stack_b en stack_a.*
+│   │   ├── do_cheapest_move (move_cost.c)
+            *Realiza el movimiento más barato.*
+│   │   │   └── do_move (do_move.c)
+                *Realiza un movimiento basado en los costos calculados.*
+│   │   │       ├── do_rotate_a (do_move.c)
+                    *Rota stack_a hasta la posición deseada.*
+│   │   │       │   └── rotate (rotate.c)
+                        *Realiza una rotación de la pila.*
+│   │   │       │       ├── do_ra (rotate.c)
+                            *Rota stack_a una vez.*
+│   │   │       │       ├── do_rb (rotate.c)
+                            *Rota stack_b una vez.*
+│   │   │       │       └── do_rr (rotate.c)
+                            *Rota ambas pilas a la vez.*
+│   │   │       ├── do_rotate_b (do_move.c)
+                    *Rota stack_b hasta la posición deseada.*
+│   │   │       ├── do_reverse_rotate_a (do_move.c)
+                    *Rota inversamente stack_a hasta la posición deseada.*
+│   │   │       │   └── reverse_rotate (reverse_rotate.c)
+                        *Realiza una rotación inversa de la pila.*
+│   │   │       │       ├── do_rra (reverse_rotate.c)
+                            *Rota inversamente stack_a una vez.*
+│   │   │       │       ├── do_rrb (reverse_rotate.c)
+                            *Rota inversamente stack_b una vez.*
+│   │   │       │       └── do_rrr (reverse_rotate.c)
+                            *Rota inversamente ambas pilas a la vez.*
+│   │   │       └── do_reverse_rotate_b (do_move.c)
+                    *Rota inversamente stack_b hasta la posición deseada.*
+│   │   └── shift_stack (sort.c)
+        *Ajusta stack_a a su posición final después del ordenamiento.*
+└── free_stack (utils.c)
+    *Libera la memoria asignada para las pilas.*
